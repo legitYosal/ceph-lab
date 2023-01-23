@@ -1,5 +1,10 @@
+[docker:children]
+gateway
+ceph_cluster
+
 [gateway]
 gateway01 ansible_host=192.168.0.152
+
 
 [ceph_cluster:children]
 ceph_osds

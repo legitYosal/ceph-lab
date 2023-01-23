@@ -9,7 +9,7 @@
     - forwarding
 
 - name: setup default route on workers
-  hosts: ceph-cluster
+  hosts: ceph_cluster
   become: true
   roles:
     - default-gateway
