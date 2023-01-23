@@ -15,4 +15,7 @@ pip install -r requirements.txt
 
 First bootstrap servers and initially configure them.  
 ```
-ansible-playbook -i inventories/ini configuration.yml
+ansible-playbook -i inventories/ini deployment.yml
+
+
+# Ceph

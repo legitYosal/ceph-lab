@@ -1,0 +1,9 @@
+---
+- name: enable packet forwarding
+  ansible.builtin.lineinfile:
+    dest: "/etc/sysctl.conf"
+    regexp: '^(#\s*)?net.ipv4.ip_forward'
+    line: "net.ipv4.ip_forward = 1"
+  notify: Apply sysctl
+
+- import_tasks: iptables.yml

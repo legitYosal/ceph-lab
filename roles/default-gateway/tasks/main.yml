@@ -1,0 +1,13 @@
+- name: set default gateway fact
+  ansible.builtin.set_fact:
+    default_gateway: "{{ hostvars[groups['gateway'].0].ansible_host }}"
+  when: default_gateway is undefined
+
+- name: remove default gateway
+  become: true
+  ansible.builtin.command: "ip route del default"
+  ignore_errors: true
+
+- name: set default gateway
+  become: true
+  ansible.builtin.command: "ip route add default via {{ default_gateway }}"

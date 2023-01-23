@@ -1,0 +1,21 @@
+---
+- name: Install docker from ubuntu repository
+  ansible.builtin.apt:
+    name: docker.io
+    state: present
+    update_cache: yes
+
+- name: Install docker-compose from ubuntu repository
+  ansible.builtin.apt:
+    name: docker.io
+    state: present
+    update_cache: yes
+
+- name: Copy daemon.json for docker
+  ansible.builtin.copy:
+    src: "daemon.json"
+    dest: "/etc/docker/daemon.json"
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart docker service

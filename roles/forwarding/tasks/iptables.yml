@@ -1,0 +1,28 @@
+- name: Get existing iptables rules
+  become: true
+  ansible.builtin.command: iptables -t nat -S POSTROUTING
+  changed_when: false
+  register: iptables_rules
+
+- name: Disable routing for local packets
+  become: true
+  ansible.builtin.command: >
+    iptables -t nat -A POSTROUTING -m comment --comment "local_routing"
+    -m addrtype --src-type LOCAL -j ACCEPT
+  when: "'local_routing' not in iptables_rules.stdout"
+
+- name: Allow packet forwarding
+  become: true
+  ansible.builtin.iptables:
+    table: nat
+    chain: POSTROUTING
+    jump: MASQUERADE
+    out_interface: eth0
+    comment: masquerading
+
+- name: ACCEPT forward policy
+  become: true
+  ansible.builtin.iptables:
+    chain: FORWARD
+    policy: ACCEPT
+    comment: accept_forward

@@ -1,0 +1,33 @@
+---
+
+- name: setup forwarding on gateway
+  hosts: gateway
+  become: true
+  roles:
+    - forwarding
+  tags:
+    - forwarding
+
+- name: setup default route on workers
+  hosts: ceph-cluster
+  become: true
+  roles:
+    - default-gateway
+  tags:
+    - default-gateway
+
+- name: setup pre-requisites
+  hosts: all
+  become: true
+  roles:
+    - common
+  tags:
+    - common
+
+- name: install docker
+  hosts: docker
+  become: true
+  roles:
+    - docker-iran
+  tags:
+    - docker-iran

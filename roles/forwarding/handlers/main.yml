@@ -1,0 +1,5 @@
+---
+- name: Apply sysctl
+  ansible.builtin.command: sysctl -p
+  async: 10
+  poll: 0

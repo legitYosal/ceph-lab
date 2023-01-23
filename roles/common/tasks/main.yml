@@ -1,0 +1,40 @@
+---
+- name: Set timezone to Asia/Tehran
+  community.general.timezone:
+    name: Asia/Tehran
+- name: fix broken apt
+  ansible.builtin.apt:
+    state: fixed
+- name: Update apt-cache
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 7200
+  changed_when: false
+- name: Gather the package facts
+  ansible.builtin.package_facts:
+    manager: auto
+  when: ansible_facts.package_facts is not defined
+- name: install pip3
+  apt: name=python3-pip state=present 
+- name: Install packages prerequisites
+  ansible.builtin.apt:
+    name: "{{ item.name }}"
+    state: "present"
+    update_cache: true
+    cache_valid_time: 7200
+    install-recommends: false
+  become: true
+  retries: 4
+  delay: 4
+  loop:
+    - name: python3
+    - name: python3-pip
+    - name: python3-venv
+    - name: python3-docker
+    - name: net-tools
+    - name: vim
+    - name: curl
+    - name: htop
+    - name: tcpdump
+    - name: tmux
+    - name: conntrack

@@ -1,0 +1,16 @@
+[gateway]
+gateway01 ansible_host=192.168.0.152
+
+[ceph_cluster:children]
+ceph_osds
+ceph_monitors
+ceph_managers
+
+[ceph_osds]
+osd01 ansible_host=192.168.0.57
+osd02 ansible_host=192.168.0.219
+
+[ceph_monitors]
+mon01  ansible_host=192.168.0.218
+
+[ceph_managers]
