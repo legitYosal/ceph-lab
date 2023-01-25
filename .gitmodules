@@ -13,3 +13,6 @@
 [submodule "ansible_collections/ansible/utils"]
 	path = ansible_collections/ansible/utils
 	url = https://github.com/ansible-collections/ansible.utils.git
+[submodule "ansible_collections/openstack/cloud"]
+	path = ansible_collections/openstack/cloud
+	url = https://github.com/openstack/ansible-collections-openstack.git
