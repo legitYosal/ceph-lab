@@ -10,6 +10,7 @@ cd ceph-lab
 python3 -m venv env
 source env/bin/activate
 pip install -r requirements.txt
+ansible-galaxy install -r requirements.yml
 ```
 ## Infra
 
@@ -19,3 +20,4 @@ ansible-playbook -i inventories/ini deployment.yml
 
 
 # Ceph
+

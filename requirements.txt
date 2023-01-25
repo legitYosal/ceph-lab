@@ -1,2 +1,3 @@
 ansible==7.1.0
-ansible-core==2.14.1
+netaddr
+six
