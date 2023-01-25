@@ -443,7 +443,7 @@
             status: "Complete"
             end: "{{ lookup('pipe', 'date +%Y%m%d%H%M%SZ') }}"
 
-- import_playbook: dashboard.yml
+- import_playbook: ceph-ansible/dashboard.yml
   when:
     - dashboard_enabled | bool
     - groups.get(monitoring_group_name, []) | length > 0
