@@ -5,17 +5,12 @@
     state: present
     update_cache: yes
 
-- name: Install docker-compose from ubuntu repository
-  ansible.builtin.apt:
-    name: docker.io
-    state: present
-    update_cache: yes
-
-- name: Copy daemon.json for docker
+- name: Copy daemon.json for docker iran
   ansible.builtin.copy:
-    src: "daemon.json"
+    src: "daemon-iran.json"
     dest: "/etc/docker/daemon.json"
     owner: root
     group: root
     mode: "0644"
   notify: Restart docker service
+  when: docker_iran

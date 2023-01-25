@@ -24,10 +24,20 @@
   tags:
     - common
 
+- name: install docker in iran
+  hosts: docker-iran
+  become: true
+  roles:
+    - docker
+  vars:
+    docker_iran: true
+  tags:
+    - docker
+
 - name: install docker
   hosts: docker
   become: true
   roles:
-    - docker-iran
+    - docker
   tags:
-    - docker-iran
+    - docker
