@@ -1,3 +1,15 @@
 [submodule "ceph-ansible"]
 	path = ceph-ansible
 	url = git@github.com:ceph/ceph-ansible.git
+[submodule "ansible_collections/openstack/config_template"]
+	path = ansible_collections/openstack/config_template
+	url = https://github.com/openstack/ansible-config_template.git
+[submodule "ansible_collections/ansible/posix"]
+	path = ansible_collections/ansible/posix
+	url = https://github.com/ansible-collections/ansible.posix.git
+[submodule "ansible_collections/community/general"]
+	path = ansible_collections/community/general
+	url = https://github.com/ansible-collections/community.general.git
+[submodule "ansible_collections/ansible/utils"]
+	path = ansible_collections/ansible/utils
+	url = https://github.com/ansible-collections/ansible.utils.git
