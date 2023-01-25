@@ -15,10 +15,9 @@ ansible-galaxy install -r requirements.yml
 ```
 ## Infra
 
-First bootstrap servers and initially configure them.  
+Bootstrap cluster:  
 ```
+ansible-playbook -i inventories/ini facts.yml
 ansible-playbook -i inventories/ini deployment.yml
-
-
-# Ceph
-
+ansible-playbook -i inventories/ini ceph.yml --ask-vault-pass -e yes_i_know=yes
+```

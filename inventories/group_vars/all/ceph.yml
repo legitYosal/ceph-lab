@@ -19,6 +19,4 @@ grafana_admin_password: !vault |
   63333939383434613734313634353137313531376333393233306139373732346564
 osd_auto_discovery: true
 
-ceph_origin: repository
-ceph_repository: community
 ceph_stable_release: quincy
