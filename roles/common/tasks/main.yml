@@ -14,8 +14,6 @@
   ansible.builtin.package_facts:
     manager: auto
   when: ansible_facts.package_facts is not defined
-- name: install pip3
-  apt: name=python3-pip state=present 
 - name: Install packages prerequisites
   ansible.builtin.apt:
     name: "{{ item.name }}"

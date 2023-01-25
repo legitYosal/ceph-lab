@@ -3,7 +3,7 @@ gateway
 ceph_cluster
 
 [docker:children]
-wstunnel
+wstunnel-server
 
 [wstunnel-server]
 wstunnel01 ansible_user=root ansible_host=164.90.225.56
