@@ -11,9 +11,8 @@ gateway01 ansible_host=192.168.0.152
 osds
 mons
 mgrs
-ceph_dashboard
 
-[ceph_dashboard:children]
+[monitoring:children]
 gateway
 
 [osds]
