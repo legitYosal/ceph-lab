@@ -3,13 +3,10 @@ gateway
 ceph_cluster
 
 [docker:children]
-wstunnel-server
+proxy
 
-[wstunnel-server]
-wstunnel01 ansible_user=root ansible_host=164.90.225.56
-
-[wstunnel-client:children]
-gateway
+[proxy]
+proxy01 ansible_user=root ansible_host=164.90.225.56
 
 [gateway]
 gateway01 ansible_host=192.168.0.152

@@ -42,18 +42,10 @@
   tags:
     - docker
 
-- name: wstunnel server
-  hosts:  wstunnel-server[0]
+- name: squid
+  hosts:  proxy[0]
   become: true
   roles:
-    - wstunnel/server
+    - squid
   tags:
-    - wstunnel
-
-- name: wstunnel client
-  hosts: gateway[0]
-  become: true
-  roles:
-    - wstunnel/client
-  tags:
-    - wstunnel
+    - squid

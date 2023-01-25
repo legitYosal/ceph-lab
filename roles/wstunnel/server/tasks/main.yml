@@ -1,7 +1,0 @@
----
-- name: Run wstunnel server
-  community.docker.docker_container:
-    name: wstunnel
-    image: mhzed/wstunnel:1.2.8
-    network_mode: host
-    command: mhzed/wstunnel -s 0.0.0.0:80
