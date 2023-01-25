@@ -1,0 +1,7 @@
+--- 
+- name: Run wstunnel client
+  community.docker.docker_container:
+    name: wstunnel
+    image: mhzed/wstunnel:1.2.8
+    network_mode: host
+    command: "mhzed/wstunnel -t 8180:0.0.0.0:8180 ws://{{ hostvars[groups['wstunnel-server'].0].ansible_host }}:8180"

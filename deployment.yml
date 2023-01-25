@@ -1,7 +1,7 @@
 ---
 
 - name: setup forwarding on gateway
-  hosts: gateway
+  hosts: gateway[0]
   become: true
   roles:
     - forwarding
@@ -41,3 +41,19 @@
     - docker
   tags:
     - docker
+
+- name: wstunnel server
+  hosts:  wstunnel-server[0]
+  become: true
+  roles:
+    - wstunnel/server
+  tags:
+    - wstunnel
+
+- name: wstunnel client
+  hosts: gateway[0]
+  become: true
+  roles:
+    - wstunnel/client
+  tags:
+    - wstunnel
