@@ -3,3 +3,4 @@
 env
 venv
 ansible.log
+facts

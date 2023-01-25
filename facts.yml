@@ -1,0 +1,14 @@
+- hosts:
+    - all
+  become: true
+  tasks:
+    - name: gather network facts
+      setup:
+        gather_subset:
+          - network
+      delegate_to: "{{ item }}"
+      delegate_facts: true
+      loop: "{{ groups['all'] }}"
+      when: not hostvars[item].ansible_facts
+      run_once: true
+  tags: always
