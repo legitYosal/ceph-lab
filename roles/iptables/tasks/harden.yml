@@ -1,0 +1,26 @@
+---
+- name: Allow related and established connections
+  ansible.builtin.iptables:
+    chain: INPUT
+    ctstate: ESTABLISHED,RELATED
+    jump: ACCEPT
+  become: true
+
+- name: Accept public ports
+  ansible.builtin.iptables:
+    chain: INPUT
+    in_interface: "{{ hostvars[inventory_hostname].public_interface }}"
+    protocol: tcp
+    destination_ports:
+      - "22"
+      - "3000"
+      - "9092"
+    jump: ACCEPT
+  become: true
+
+# - name: Drop other
+#   ansible.builtin.iptables:
+#     chain: INPUT
+#     in_interface: "{{ hostvars[inventory_hostname].public_interface }}"
+#     jump: DROP
+#   become: true

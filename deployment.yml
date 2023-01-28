@@ -41,3 +41,12 @@
     - docker
   tags:
     - docker
+
+- name: configure gateway routing
+  hosts: gateway[0]
+  become: true
+  roles:
+    - iptables
+    - haproxy
+  tags:
+    - haproxy

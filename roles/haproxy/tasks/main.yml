@@ -1,0 +1,32 @@
+---
+
+- name: Populate service facts
+  ansible.builtin.service_facts:
+
+- name: Stop nginx 
+  ansible.builtin.systemd:
+    name: nginx
+    state: stopped
+    enabled: false
+    force: true
+  when:
+    - "'nginx.service' in ansible_facts.services"
+    - ansible_facts.services['nginx.service'].state == 'running'
+
+- name: Update apt cache and install haproxy
+  ansible.builtin.apt:
+    name: "haproxy"
+    update_cache: true
+    cache_valid_time: 3600
+  retries: 3
+  delay: 10
+  become: true
+
+- name: Configuring haproxy
+  become: true
+  ansible.builtin.template:
+    src: haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+    validate: haproxy -f %s -c -q
+    mode: 0644
+  notify: Restart haproxy

@@ -1,0 +1,5 @@
+---
+
+- name: Iptables tweaking if has public eth
+  ansible.builtin.import_tasks: harden.yml
+  when: inventory_hostname in groups.get('gateway', [])

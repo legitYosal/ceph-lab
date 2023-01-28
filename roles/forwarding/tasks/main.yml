@@ -6,4 +6,4 @@
     line: "net.ipv4.ip_forward = 1"
   notify: Apply sysctl
 
-- import_tasks: iptables.yml
+- ansible.builtin.import_tasks: iptables.yml

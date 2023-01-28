@@ -1,7 +1,10 @@
 containerized_deployment: true
 
-public_network: "192.168.1.0/24"
-cluster_network: "192.168.2.0/24"
+public_network_3rd: "1"
+public_network: "192.168.{{ public_network_3rd }}.0/24"
+cluster_network_3rd: "2"
+cluster_network: "192.168.{{ cluster_network_3rd }}.0/24"
+
 monitor_address_block: "{{ public_network }}"
 dashboard_admin_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256
