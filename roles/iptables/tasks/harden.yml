@@ -18,9 +18,9 @@
     jump: ACCEPT
   become: true
 
-# - name: Drop other
-#   ansible.builtin.iptables:
-#     chain: INPUT
-#     in_interface: "{{ hostvars[inventory_hostname].public_interface }}"
-#     jump: DROP
-#   become: true
+- name: Drop other
+  ansible.builtin.iptables:
+    chain: INPUT
+    in_interface: "{{ hostvars[inventory_hostname].public_interface }}"
+    jump: DROP
+  become: true
