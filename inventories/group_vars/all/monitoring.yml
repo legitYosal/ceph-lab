@@ -1,2 +1,3 @@
 grafana_key: "/etc/grafana/certs/grafana.key"
 grafana_crt: "/etc/grafana/certs/grafana.cert"
+grafana_server_fqdn: "ceph-lab-ysf.arvaniaas-staging.ir"
