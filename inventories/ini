@@ -5,7 +5,7 @@ ceph_cluster
 [docker:children]
 
 [gateway]
-gateway01 ansible_host=192.168.0.152 public_address=188.121.107.76 public_interface=eth0
+gateway01 ansible_host=192.168.0.152 public_address=188.121.107.76 public_interface=eth0 ceph_public_address=192.168.1.37
 
 [ceph_cluster:children]
 osds

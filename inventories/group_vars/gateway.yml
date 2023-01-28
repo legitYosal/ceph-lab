@@ -1,3 +1,0 @@
----
-
-monitoring_internal_address: "192.168.{{ public_network_3rd }}.{{ hostvars[inventory_hostname].ansible_host.split('.')[-1] }}"
