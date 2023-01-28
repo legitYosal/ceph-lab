@@ -47,6 +47,7 @@
   become: true
   roles:
     - iptables
-    - haproxy
+    - certs
   tags:
-    - haproxy
+    - certs
+    - iptables

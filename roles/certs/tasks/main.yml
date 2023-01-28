@@ -1,0 +1,26 @@
+---
+- name: create grafana dir
+  ansible.builtin.file:
+    path: /etc/grafana
+    state: directory
+
+- name: create certs dir
+  ansible.builtin.file:
+    path: /etc/grafana/certs
+    state: directory
+
+- name: Copy grafana certs
+  ansible.builtin.template:
+    src: "grafana.crt.j2"
+    dest: "{{ grafana_crt }}"
+    owner: root
+    group: root
+    mode: "0666"
+
+- name: Copy grafana keys
+  ansible.builtin.template:
+    src: "grafana.key.j2"
+    dest: "{{ grafana_key }}"
+    owner: root
+    group: root
+    mode: "0666"
