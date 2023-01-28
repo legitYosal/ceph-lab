@@ -1,3 +1,2 @@
 grafana_key: "/etc/grafana/certs/grafana.key"
 grafana_crt: "/etc/grafana/certs/grafana.cert"
-grafana_server_addr: "{{ hostvars[groups['gateway'].0].public_address }}"

@@ -1,0 +1,59 @@
+---
+- name: Populate service facts
+  ansible.builtin.service_facts:
+
+- name: Stop nginx 
+  ansible.builtin.systemd:
+    name: nginx
+    state: stopped
+    enabled: false
+    force: true
+  when:
+    - "'nginx.service' in ansible_facts.services"
+    - ansible_facts.services['nginx.service'].state == 'running'
+
+- name: Update apt cache and install haproxy
+  ansible.builtin.apt:
+    name: "haproxy"
+    update_cache: true
+    cache_valid_time: 3600
+  retries: 3
+  delay: 10
+  become: true
+
+- name: create grafana dir
+  ansible.builtin.file:
+    path: /etc/grafana
+    state: directory
+
+- name: create certs dir
+  ansible.builtin.file:
+    path: /etc/grafana/certs
+    state: directory
+
+- name: Copy grafana certs
+  ansible.builtin.template:
+    src: "grafana.crt.j2"
+    dest: "{{ grafana_crt }}"
+    owner: root
+    group: root
+    mode: "0666"
+  notify: Restart haproxy
+
+- name: Copy grafana keys
+  ansible.builtin.template:
+    src: "grafana.key.j2"
+    dest: "{{ grafana_key }}"
+    owner: root
+    group: root
+    mode: "0666"
+  notify: Restart haproxy
+
+- name: Configuring haproxy
+  become: true
+  ansible.builtin.template:
+    src: haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+    validate: haproxy -f %s -c -q
+    mode: 0644
+  notify: Restart haproxy
