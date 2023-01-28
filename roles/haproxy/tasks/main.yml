@@ -33,7 +33,7 @@
 
 - name: Copy grafana keys
   ansible.builtin.template:
-    src: "grafana.crt.j2"
+    src: "grafana.key.j2"
     dest: "/etc/ssl/private/grafana.key"
     owner: root
     group: root
