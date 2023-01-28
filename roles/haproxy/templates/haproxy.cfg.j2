@@ -43,3 +43,12 @@ backend grafana_backend
     mode tcp
     option ssl-hello-chk
     server grafana {{ hostvars[groups['gateway'].0].ceph_public_address }}:3000 check
+
+frontend prometheus_frontend
+    bind {{  hostvars[groups['gateway'].0].public_address }}:9092
+    mode tcp
+    option tcplog
+    default_backend prometheus_backend
+backend prometheus_backend
+    mode tcp
+    server prometheus {{ hostvars[groups['gateway'].0].ceph_public_address }}:9092 check
