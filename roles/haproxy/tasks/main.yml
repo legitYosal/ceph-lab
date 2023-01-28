@@ -23,8 +23,8 @@
   become: true
 
 - name: Copy grafana certs
-  ansible.builtin.copy:
-    src: "grafana.crt"
+  ansible.builtin.template:
+    src: "grafana.crt.j2"
     dest: "/etc/ssl/certs/grafana.cert"
     owner: root
     group: root
@@ -32,8 +32,8 @@
   notify: Restart haproxy
 
 - name: Copy grafana keys
-  ansible.builtin.copy:
-    src: "grafana.crt"
+  ansible.builtin.template:
+    src: "grafana.crt.j2"
     dest: "/etc/ssl/private/grafana.key"
     owner: root
     group: root

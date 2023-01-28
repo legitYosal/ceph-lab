@@ -1,2 +1,2 @@
-grafana_key: "/roles/haproxy/files/grafana.key"
-grafana_crt: "/roles/haproxy/files/grafana.crt"
+grafana_key: "/etc/ssl/private/grafana.key"
+grafana_crt: "/etc/ssl/certs/grafana.cert"
