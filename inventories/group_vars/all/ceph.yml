@@ -25,3 +25,7 @@ osd_auto_discovery: true
 ceph_docker_registry: quay.io
 ceph_docker_image: ceph/daemon
 ceph_docker_image_tag: v6.0.4-stable-6.0-pacific-centos-8
+
+ceph_conf_overrides:
+  global:
+    auth_allow_insecure_global_id_reclaim: false
