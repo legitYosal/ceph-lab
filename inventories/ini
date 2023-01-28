@@ -24,3 +24,5 @@ mons
 
 [mons]
 mon01  ansible_host=192.168.0.218 ceph_public_address=192.168.1.208
+mon02 ansible_host=192.168.0.160 ceph_public_address=192.168.1.26
+mon03 ansible_host=192.168.0.96 ceph_public_address=192.168.1.240
