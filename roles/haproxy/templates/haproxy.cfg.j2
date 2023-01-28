@@ -33,6 +33,9 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
+userlist admincred
+	user admin {{ grafana_admin_password }}
+
 frontend grafana_frontend
     bind {{  hostvars[groups['gateway'].0].public_address }}:3000
     mode tcp
@@ -48,6 +51,7 @@ frontend prometheus_frontend
     bind {{  hostvars[groups['gateway'].0].public_address }}:9092
     mode tcp
     option tcplog
+	http-request auth unless { http_auth(admincred) }
     default_backend prometheus_backend
 backend prometheus_backend
     mode tcp
