@@ -6,8 +6,8 @@
   become: true
   ansible.builtin.lineinfile:
     path: /etc/hosts
-    regexp: "^{{ hostvars[item].ceph_public_address }} {{ item }} auto-generate"
-    line: "{{ hostvars[item].ceph_public_address }} {{ item }} auto-generate"
+    regexp: "^{{ hostvars[item].ceph_public_address }} {{ item }} # auto-generate"
+    line: "{{ hostvars[item].ceph_public_address }} {{ item }} # auto-generate"
   loop: "{{ groups['all'] }}"
 - name: fix broken apt
   ansible.builtin.apt:
