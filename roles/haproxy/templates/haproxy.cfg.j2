@@ -37,4 +37,4 @@ frontend grafana_frontend
     bind {{  hostvars[groups['gateway'].0].public_address }}:3000
     use_backend grafana_backend
 backend grafana_backend
-    server grafana {{ hostvars[groups['gateway'].0].ceph_public_address }}:3000
+    server grafana {{ hostvars[groups['gateway'].0].ceph_public_address }}:3000 check ssl verify none
