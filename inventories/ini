@@ -18,6 +18,7 @@ gateway
 [osds]
 osd01 ansible_host=192.168.0.57 ceph_public_address=192.168.1.147
 osd02 ansible_host=192.168.0.219 ceph_public_address=192.168.1.117
+osd03 ansible_host=192.168.0.41 ceph_public_address=192.168.1.12
 
 [mgrs:children]
 mons
