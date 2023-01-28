@@ -1,2 +1,2 @@
-grafana_key: "/etc/ssl/private/grafana.key"
-grafana_crt: "/etc/ssl/certs/grafana.cert"
+grafana_key: "/etc/grafana/certs/grafana.key"
+grafana_crt: "/etc/grafana/certs/grafana.cert"
