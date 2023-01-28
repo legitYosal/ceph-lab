@@ -18,7 +18,7 @@ ansible-galaxy install -r requirements.yml
 Bootstrap cluster:  
 ```
 ansible-playbook -i inventories/ini facts.yml
-ansible-playbook -i inventories/ini deployment.yml
+ansible-playbook -i inventories/ini deployment.yml --ask-vault-pass
 ansible-playbook -i inventories/ini ceph.yml --ask-vault-pass -e yes_i_know=yes
 ```
 

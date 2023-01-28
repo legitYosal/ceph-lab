@@ -22,6 +22,24 @@
   delay: 10
   become: true
 
+- name: Copy grafana certs
+  ansible.builtin.copy:
+    src: "grafana.crt"
+    dest: "/etc/ssl/certs/grafana.cert"
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart haproxy
+
+- name: Copy grafana keys
+  ansible.builtin.copy:
+    src: "grafana.crt"
+    dest: "/etc/ssl/private/grafana.key"
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart haproxy
+
 - name: Configuring haproxy
   become: true
   ansible.builtin.template:

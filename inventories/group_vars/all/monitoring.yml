@@ -1,0 +1,2 @@
+grafana_key: "/roles/haproxy/files/grafana.key"
+grafana_crt: "/roles/haproxy/files/grafana.crt"
