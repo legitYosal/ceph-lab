@@ -6,7 +6,7 @@
   become: true
   ansible.builtin.lineinfile:
     path: /etc/hosts
-    regexp: "^{{ hostvars[item].ceph_public_address }} {{ item }} # auto-generate"
+    search_string: "{{ item }}"
     line: "{{ hostvars[item].ceph_public_address }} {{ item }} # auto-generate"
   loop: "{{ groups['all'] }}"
 - name: fix broken apt
