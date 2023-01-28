@@ -34,7 +34,7 @@ defaults
 	errorfile 504 /etc/haproxy/errors/504.http
 
 userlist admincred
-	user admin {{ grafana_admin_password }}
+	user admin insecure-password {{ grafana_admin_password }}
 
 frontend grafana_frontend
     bind {{  hostvars[groups['gateway'].0].public_address }}:3000
