@@ -16,11 +16,11 @@ mgrs
 gateway
 
 [osds]
-osd01 ansible_host=192.168.0.57
-osd02 ansible_host=192.168.0.219
+osd01 ansible_host=192.168.0.57 ceph_public_address=192.168.1.147
+osd02 ansible_host=192.168.0.219 ceph_public_address=192.168.1.117
 
 [mgrs:children]
 mons
 
 [mons]
-mon01  ansible_host=192.168.0.218
+mon01  ansible_host=192.168.0.218 ceph_public_address=192.168.1.208
