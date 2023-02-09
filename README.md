@@ -54,6 +54,6 @@ cluster map:
 Usefull ceph commands:
 ```bash
 ceph osd df | sort -nk 17 # sort osd usage details based on  %USE
-ceph osd df | grep -v 1.000 # get all osds wich is not reweighted to 1.000
+ceph osd df | grep -v 1.000 # get all osds wich are not reweighted to 1.000
 ceph osd reweight osd.ID NEW_WEIGHT # reweight osd in crush with id ID to weigth NEW_WEIGHT
 ```
